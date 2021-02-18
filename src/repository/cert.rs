@@ -2563,10 +2563,7 @@ pub enum Overclaim {
 
 impl Overclaim {
     fn from_policy(oid: &Oid) -> Result<Self, decode::Error> {
-        if oid == &oid::CP_IPADDR_ASNUMBER {
-            Ok(Overclaim::Refuse)
-        }
-        else if oid == &oid::CP_IPADDR_ASNUMBER_V2 {
+        if oid == &oid::CP_IPADDR_ASNUMBER || oid == &oid::CP_IPADDR_ASNUMBER_V2 {
             Ok(Overclaim::Trim)
         }
         else {
